@@ -13,7 +13,10 @@ import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
-
+import { CrisisModule } from './crisis/crisis.module';
+import { AdminModule } from './admin/admin.module';
+import { AuthModule } from './auth/auth.module';
+import { ComposeMessageComponent } from './compose-message/compose-message.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -26,7 +29,8 @@ export function createTranslateLoader(http: HttpClient) {
     HeroDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    ComposeMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -38,11 +42,14 @@ export function createTranslateLoader(http: HttpClient) {
       }
     }),
     FormsModule,
-    AppRoutingModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false, passThruUnknownUrl: true }
-    )
+    ),
+    CrisisModule,
+    AdminModule,
+    AuthModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
